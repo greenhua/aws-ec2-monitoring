@@ -23,15 +23,15 @@ def main():
         for i2 in response['Reservations']:
     	    for i in i2['Instances']:
     		#print(i)
-    		tags = getTags(i['Tags'])
     		name = getTag(i['Tags'], "Name")
+    		monitoring = getTag(i['Tags'], "Monitoring")
     		print(name + "\n")
     		ip = i['PublicIpAddress']
     		instanceid=i['InstanceId']
         
         	#hosts['list'].append( {'name':name, 'ip':ip, 'instanceId':instanceid})
 		f.write("#" + name + "\n")
-    		f.write(ip + " ansible_ssh_user=ec2-user istanceId=" + instanceid + " region=" + region + " tags=" + tags +"\n\n")
+    		f.write(ip + " ansible_ssh_user=ec2-user istanceId=" + instanceid + " region=" + region + " monitoring=" + monitoring + "\n\n")
 
 
 
@@ -40,14 +40,9 @@ def getTag(tags, key):
     for tag in tags:
 	if tag['Key'] == key:
 	    return tag['Value']
-    return false
+    return "None"
+
     
-def getTags(tags):
-    tags_list = []
-    for tag in tags:
-	tags_list.append(tag['Key'])
-    
-    return ",".join(tags_list)   
     
         
 main()
