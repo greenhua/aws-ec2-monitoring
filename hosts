@@ -1,30 +1,30 @@
 #nginx
-54.169.152.48 ansible_ssh_user=ec2-user istanceId=i-062031aac1783987a region=ap-southeast-1
+54.169.152.48 ansible_ssh_user=ec2-user istanceId=i-062031aac1783987a region=ap-southeast-1 tags=Name
 
 #phantom
-52.77.238.26 ansible_ssh_user=ec2-user istanceId=i-07fd4efbdbcf92d43 region=ap-southeast-1
+52.77.238.26 ansible_ssh_user=ec2-user istanceId=i-07fd4efbdbcf92d43 region=ap-southeast-1 tags=Name
 
 #upload
-18.136.211.0 ansible_ssh_user=ec2-user istanceId=i-02bb2645222259b32 region=ap-southeast-1
+18.136.211.0 ansible_ssh_user=ec2-user istanceId=i-02bb2645222259b32 region=ap-southeast-1 tags=Name
 
 #wildfly_job2
-18.136.119.167 ansible_ssh_user=ec2-user istanceId=i-01fdbcd42999b7489 region=ap-southeast-1
+18.136.119.167 ansible_ssh_user=ec2-user istanceId=i-01fdbcd42999b7489 region=ap-southeast-1 tags=Name
 
 #wildfly_job3
-52.221.200.146 ansible_ssh_user=ec2-user istanceId=i-0a8afb1b674191451 region=ap-southeast-1
+52.221.200.146 ansible_ssh_user=ec2-user istanceId=i-0a8afb1b674191451 region=ap-southeast-1 tags=Name
 
 #mobile
-54.179.186.35 ansible_ssh_user=ec2-user istanceId=i-062556cf105cc1667 region=ap-southeast-1
+54.179.186.35 ansible_ssh_user=ec2-user istanceId=i-062556cf105cc1667 region=ap-southeast-1 tags=Name
 
 #wildfly_main
-52.221.179.114 ansible_ssh_user=ec2-user istanceId=i-08741729721a5edde region=ap-southeast-1
+52.221.179.114 ansible_ssh_user=ec2-user istanceId=i-08741729721a5edde region=ap-southeast-1 tags=Name
 
 #wildfly_job1
-54.169.61.52 ansible_ssh_user=ec2-user istanceId=i-0bdb9965a8b392354 region=ap-southeast-1
+54.169.61.52 ansible_ssh_user=ec2-user istanceId=i-0bdb9965a8b392354 region=ap-southeast-1 tags=Name
 
 #test
-52.221.240.60 ansible_ssh_user=ec2-user istanceId=i-00dec970cb228a38b region=ap-southeast-1
+52.221.240.60 ansible_ssh_user=ec2-user istanceId=i-00dec970cb228a38b region=ap-southeast-1 tags=q,w,Name
 
 #docker
-18.136.203.124 ansible_ssh_user=ec2-user istanceId=i-04da72a8907bf027d region=ap-southeast-1
+18.136.203.124 ansible_ssh_user=ec2-user istanceId=i-04da72a8907bf027d region=ap-southeast-1 tags=Name
 
