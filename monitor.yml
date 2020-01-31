@@ -2,3 +2,8 @@
   roles:
     - role: deekayen.cloudwatch_monitoring_scripts
       when:  monitoring is match("None")
+  tasks:
+    - name: create alarm
+      shell: python scripts/alarm.py  {{ istanceId }} {{ name }}
+      when:  monitoring is match("None")
+      delegate_to: 127.0.0.1
