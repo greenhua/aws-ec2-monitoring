@@ -1,0 +1,27 @@
+---
+
+language: python
+os: linux
+dist: bionic
+services: docker
+
+env:
+  global:
+    - ROLE_NAME: cloudwatch_monitoring_scripts
+  jobs:
+    - MOLECULE_DISTRO: centos8
+    - MOLECULE_DISTRO: centos7
+
+install:
+  - pip install molecule docker
+
+before_script:
+  - cd ../
+  - mv ansible-role-$ROLE_NAME deekayen.$ROLE_NAME
+  - cd deekayen.$ROLE_NAME
+
+script:
+  - molecule test
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/

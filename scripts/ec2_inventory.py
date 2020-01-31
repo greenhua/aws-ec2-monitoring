@@ -31,7 +31,7 @@ def main():
         
         	#hosts['list'].append( {'name':name, 'ip':ip, 'instanceId':instanceid})
 		f.write("#" + name + "\n")
-    		f.write(ip + " ansible_ssh_user=ec2-user istanceId=" + instanceid + " region=" + region + " monitoring=" + monitoring + "\n\n")
+    		f.write(ip + " ansible_ssh_user=ec2-user istanceId=" + instanceid + " region=" + region + " monitoring=" + monitoring + " name=" + name + "\n\n")
 
 
 

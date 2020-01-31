@@ -1,0 +1,64 @@
+---
+
+- debug:
+    var: ansible_distribution_major_version
+    verbosity: 1
+
+- debug:
+    var: ansible_distribution
+    verbosity: 1
+
+# Install monitoring script
+# Monitoring Memory and Disk Metrics for Amazon EC2 Linux Instances
+# See: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/mon-scripts.html
+
+- name: Install script dependencies for EL 7.
+  yum:
+    name: "{{ package_dependencies }}"
+    state: present
+  when:
+    - ansible_distribution == 'CentOS' or ansible_distribution == 'RedHat'
+    - ansible_distribution_major_version == '7'
+
+- name: Install script dependencies for AMazon linux.
+  yum:
+    name: "{{ package_dependencies }}"
+    state: present
+  when:
+    - ansible_distribution == 'Amazon'
+    - ansible_distribution_major_version == '2'
+
+
+- name: Install script dependencies for EL 8.
+  dnf:
+    name: "{{ package_dependencies }}"
+    enablerepo: PowerTools
+    state: present
+  when:
+    - ansible_distribution == 'CentOS' or ansible_distribution == 'RedHat'
+    - ansible_distribution_major_version == '8'
+
+# Monitoring Memory and Disk Metrics for Amazon EC2 Linux Instances
+# See: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/mon-scripts.html
+
+- name: Unarchive the CloudWatch monitoring package.
+  unarchive:
+    src: "{{ aws_mon_script_url }}"
+    dest: "{{ aws_mon_script_install_dir }}"
+    remote_src: true
+  register: get_mon_script
+
+- name: "Debug: monitoring script install."
+  debug:
+    var: get_mon_script
+    verbosity: 2
+
+- name: Set a cron every 5 minutes to run perl.
+  cron:
+    name: "run mon-put-instance-data.pl every 5mn"
+    minute: "*/5"
+    user: root
+    job: >
+      {{ aws_mon_script_install_dir }}/aws-scripts-mon/mon-put-instance-data.pl --mem-used --swap-util
+      --mem-util --mem-used --mem-avail --disk-space-util --disk-path=/ --from-cron
+    cron_file: ansible_aws_mon-put-instance-data

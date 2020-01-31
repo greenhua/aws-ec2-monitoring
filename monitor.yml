@@ -1,0 +1,4 @@
+- hosts: all
+  roles:
+    - role: deekayen.cloudwatch_monitoring_scripts
+      when:  monitoring is match("None")

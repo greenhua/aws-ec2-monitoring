@@ -1,0 +1,23 @@
+---
+
+galaxy_info:
+  role_name: cloudwatch_monitoring_scripts
+  author: David Norman
+  description: "Install AWS CloudWatch Agent scripts to send metrics for monitoring memory, swap, and disk space."
+  license: MIT
+  min_ansible_version: 2.2
+
+  platforms:
+    - name: EL
+      versions:
+        - 7
+        - 8
+
+  galaxy_tags:
+    - amazon
+    - aws
+    - centos
+    - redhat
+    - cloudwatch
+
+dependencies: []
